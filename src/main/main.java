@@ -6,11 +6,31 @@ import model.*;
 import view.*;
 
 public class main {
+    private List<Mail> mailList;
+    private Histogram<String> histogram;
+   
     public static void main(String[] args) throws IOException {
-        String filename = "email.txt";
-        List<Mail> mailList = MailListReader.read(filename);
-        Histogram<String> histogram = MailHistogramBuilder.build(mailList);
+      main kata4=new main();
+      kata4.execute();
+    }
+    
+    void execute() throws IOException {
+        input();
+        process();
+        output();
+    }
+    
+    void input() throws IOException {
+        String fileName="email.txt";
+        mailList= MailListReader.read(fileName);
+    }
+    
+    void process() {
+        histogram = MailHistogramBuilder.build(mailList);
+    }
+    
+    void output() {
         HistogramDisplay histoDisplay = new HistogramDisplay(histogram);
         histoDisplay.execute();
-    }
+}    
 }
